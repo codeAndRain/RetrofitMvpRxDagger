@@ -7,6 +7,7 @@ import com.challenge.retrofitmvprxdagger.ui.mvp.UserScreenPresenter;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 @Module
 public class UserActivityModule {
@@ -19,7 +20,7 @@ public class UserActivityModule {
 
     @Provides
     @ActivityScope
-    public UserScreenPresenter provideUserScreenPresenter(Repository repository) {
-        return new UserScreenPresenter(view, repository);
+    public UserScreenPresenter provideUserScreenPresenter(Repository repository, CompositeDisposable compositeDisposable) {
+        return new UserScreenPresenter(view, repository, compositeDisposable);
     }
 }

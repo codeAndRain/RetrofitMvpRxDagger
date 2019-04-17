@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.challenge.retrofitmvprxdagger.R;
+import com.challenge.retrofitmvprxdagger.model.User;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +23,8 @@ class UserListViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public  void bind() {
-
+    public  void bind(User user) {
+        idTextView.setText(String.valueOf(user.getId()));
+        titleTextView.setText(user.getTitle());
     }
 }

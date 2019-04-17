@@ -6,6 +6,7 @@ import android.content.Context;
 import com.challenge.retrofitmvprxdagger.di.component.ApplicationComponent;
 import com.challenge.retrofitmvprxdagger.di.component.DaggerApplicationComponent;
 import com.challenge.retrofitmvprxdagger.di.modules.ApplicationModule;
+import com.challenge.retrofitmvprxdagger.di.modules.DatabaseModule;
 
 public class UserApp extends Application {
 
@@ -17,6 +18,7 @@ public class UserApp extends Application {
         applicationComponent = DaggerApplicationComponent
                 .builder()
                 .applicationModule(new ApplicationModule(this))
+                .databaseModule(new DatabaseModule(this))
                 .build();
     }
 
