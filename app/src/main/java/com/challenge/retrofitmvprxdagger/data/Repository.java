@@ -24,14 +24,14 @@ public class Repository {
     }
 
     private Single<List<User>> getRemoteUserList() {
-        return userService.getUserList();
+        return userService.getUserList()
+                .doOnSuccess(this::insertUsers);
     }
 
     public Single<List<User>> getUserList() {
         return userDao.getUserList()
                 .flatMap(users -> {
                     if (users.isEmpty()) {
-                        insertUsers(users);
                         return getRemoteUserList();
                     } else {
                         return getLocalUserList();
